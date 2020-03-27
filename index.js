@@ -17,12 +17,12 @@ app.use(express.urlencoded({extended: true}));
 app.get("/api/articles", (req, res) => {
     const sqlConnection = mysql.createConnection(sqlConfig);
     sqlConnection.query(
-        "SELECT id, title, content, author, created_at FROM node_articles WHERE id = 1 LIMIT 1",
+        "SELECT id, title, content, author, created_at FROM node_articles ORDER BY id DESC LIMIT 5",
         (error, result) => {
             if (error) {
                 console.log("ERROR :", error.code);
             } else {
-                res.send(result[0]);
+                res.send(result);
             }
             sqlConnection.end();
         });
@@ -30,12 +30,12 @@ app.get("/api/articles", (req, res) => {
 app.get("/api/comments", (req, res) => {
     const sqlConnection = mysql.createConnection(sqlConfig);
     sqlConnection.query(
-        "SELECT id, article_id, author, content, created_at FROM node_comments WHERE id = 1 LIMIT 1",
+        "SELECT id, articleId, author, content, created_at FROM node_comments ORDER BY id DESC LIMIT 5",
         (error, result) => {
             if (error) {
                 console.log("ERROR :", error.code);
             } else {
-                res.send(result[0]);
+                res.send(result);
             }
             sqlConnection.end();
         });
@@ -65,7 +65,7 @@ app.route("/api/articles/create")
         const sqlConnection = mysql.createConnection(sqlConfig);
         sqlConnection.query(
             "DELETE FROM node_articles WHERE id = ?",
-            [req.body.articleId],
+            [req.body.article_Id],
             (error, result) => {
                 if (error) {
                     console.log("ERREUR :", error.code);
@@ -84,7 +84,7 @@ app.route("/api/comments/create")
         const sqlConnection = mysql.createConnection(sqlConfig);
         sqlConnection.query(
             "INSERT INTO node_comments VALUES (NULL, ?, ?, ?, ?)",
-            [req.body.articleId, req.body.author, req.body.content, req.body.date],
+            [req.body.Idarticle, req.body.author, req.body.content, req.body.date],
             (error, result) => {
                 if (error) {
                     console.log("ERREUR :", error.code);
@@ -102,7 +102,7 @@ app.route("/api/comments/delete")
         const sqlConnection = mysql.createConnection(sqlConfig);
         sqlConnection.query(
             "DELETE FROM node_comments WHERE id = ?",
-            [req.body.commentsId],
+            [req.body.comment],
             (error, result) => {
                 if (error) {
                     console.log("ERREUR :", error.code);
