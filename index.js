@@ -27,6 +27,19 @@ app.get("/api/articles", (req, res) => {
             sqlConnection.end();
         });
 });
+app.get("/api/comments", (req, res) => {
+    const sqlConnection = mysql.createConnection(sqlConfig);
+    sqlConnection.query(
+        "SELECT id, article_id, author, content, created_at FROM node_comments WHERE id = 1 LIMIT 1",
+        (error, result) => {
+            if (error) {
+                console.log("ERROR :", error.code);
+            } else {
+                res.send(result[0]);
+            }
+            sqlConnection.end();
+        });
+});
 app.route("/api/articles/create")
     .get((req, res) => res.status(503).send({ status: "ERROR" }))
     .post((req, res) => {
