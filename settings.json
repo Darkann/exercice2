@@ -1,0 +1,8 @@
+{
+    "sqlConfig": {
+        "host": "franck-ca.bgeso-pedagogique.fr",
+        "user": "bgeso31_franck-ca_dbu",
+        "password": "FraCal31!!",
+        "database": "bgeso31_franck-ca_db"
+    }
+}
