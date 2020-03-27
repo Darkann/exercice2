@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>création commentaire</title>
+</head>
+<body>
+    <form method="post" action="/api/comments/create">
+        <fieldset>
+        <div>
+            <label for="id_article">Numero de l'article :</label>
+            <input type="text" id="articleId" name="articleId">
+        </div>
+        <div>
+            <label for="author">Votre nom :</label>
+            <input type="text" id="author" name="author">
+        </div>
+        <div>
+            <label for="content">Contenue de votre article :</label>
+            <input type="textearea" id="content" name="content">
+        </div>
+        <div>
+            <label for="datecreation">date de création :</label>
+            <input type="date" name="datecreation">
+        </div>
+        <div class="button">
+            <button type="submit">Envoyer</button>
+        </div>
+    </fieldset>
+    </form>
+</body>
+</html>

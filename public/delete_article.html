@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>suppression article</title>
+</head>
+<body>
+    <form method="post" action="/api/articles/delete">
+        <fieldset>
+            <legend>Formulaire de suppression d’article</legend>
+            <div>
+                <label for="Id article">Id de l’article à supprimer : </label>
+                <input type="text" id="suppIdArticle" name="articleId">
+            </div>
+            <div class="button">
+                <button type="submit">Supprimer l’article</button>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
